@@ -1,5 +1,8 @@
 # Build outputs
-/build/
+/build/*
+!/build/bin/
+/build/bin/*
+!/build/bin/*.dll
 
 # Python cache
 __pycache__/
