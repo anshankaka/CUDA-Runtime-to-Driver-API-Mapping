@@ -1,0 +1,114 @@
+Runtime API to Driver API mapping summary
+========================================
+
+Log file: test_api_mix_callback_trace.log
+Parsed CUPTI callback rows: 398
+Non-CUPTI / skipped lines: 2
+Runtime API spans: 34
+Driver API spans: 165
+Mapped runtime-driver rows: 47
+Unmapped driver spans: 118
+
+Mapping type counts:
+  nested_same_correlation: 47
+  no_driver_api: 2
+
+Runtime API counts:
+  cudaFree: 4
+  cudaMalloc: 3
+  cudaMemcpyAsync: 3
+  cudaEventRecord: 2
+  cudaFreeHost: 2
+  cudaEventDestroy: 2
+  cudaGetDeviceCount: 1
+  cudaSetDevice: 1
+  cudaGetDevice: 1
+  cudaGetDeviceProperties_v2: 1
+  cudaStreamCreateWithFlags: 1
+  cudaEventCreate: 1
+  cudaEventCreateWithFlags: 1
+  cudaMallocHost: 1
+  cudaHostAlloc: 1
+  cudaMemsetAsync: 1
+  cudaLaunchKernel: 1
+  cudaPeekAtLastError: 1
+  cudaStreamSynchronize: 1
+  cudaEventSynchronize: 1
+  cudaEventElapsedTime: 1
+  cudaDeviceSynchronize: 1
+  cudaStreamDestroy: 1
+  cudaDeviceReset: 1
+
+Runtime function -> driver-count distribution:
+  cudaFree -> 1 driver call(s): 4 runtime call(s)
+  cudaMalloc -> 1 driver call(s): 3 runtime call(s)
+  cudaMemcpyAsync -> 1 driver call(s): 3 runtime call(s)
+  cudaEventRecord -> 1 driver call(s): 2 runtime call(s)
+  cudaFreeHost -> 1 driver call(s): 2 runtime call(s)
+  cudaEventDestroy -> 1 driver call(s): 2 runtime call(s)
+  cudaGetDeviceCount -> 0 driver call(s): 1 runtime call(s)
+  cudaSetDevice -> 5 driver call(s): 1 runtime call(s)
+  cudaGetDevice -> 1 driver call(s): 1 runtime call(s)
+  cudaGetDeviceProperties_v2 -> 5 driver call(s): 1 runtime call(s)
+  cudaStreamCreateWithFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaEventCreate -> 1 driver call(s): 1 runtime call(s)
+  cudaEventCreateWithFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaMallocHost -> 1 driver call(s): 1 runtime call(s)
+  cudaHostAlloc -> 1 driver call(s): 1 runtime call(s)
+  cudaMemsetAsync -> 1 driver call(s): 1 runtime call(s)
+  cudaLaunchKernel -> 6 driver call(s): 1 runtime call(s)
+  cudaPeekAtLastError -> 0 driver call(s): 1 runtime call(s)
+  cudaStreamSynchronize -> 1 driver call(s): 1 runtime call(s)
+  cudaEventSynchronize -> 1 driver call(s): 1 runtime call(s)
+  cudaEventElapsedTime -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceSynchronize -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamDestroy -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceReset -> 3 driver call(s): 1 runtime call(s)
+
+Top runtime -> driver pairs:
+  5x  cudaGetDeviceProperties_v2 -> cuDeviceGetAttribute
+  4x  cudaFree -> cuMemFree_v2
+  3x  cudaMalloc -> cuMemAlloc_v2
+  2x  cudaSetDevice -> cuCtxGetCurrent
+  2x  cudaMemcpyAsync -> cuMemcpyHtoDAsync_v2
+  2x  cudaEventRecord -> cuEventRecord
+  2x  cudaFreeHost -> cuMemFreeHost
+  2x  cudaEventDestroy -> cuEventDestroy_v2
+  1x  cudaSetDevice -> cuCtxSetCurrent
+  1x  cudaSetDevice -> cuDevicePrimaryCtxRetain
+  1x  cudaSetDevice -> cuCtxGetDevice
+  1x  cudaGetDevice -> cuCtxGetDevice
+  1x  cudaStreamCreateWithFlags -> cuStreamCreate
+  1x  cudaEventCreate -> cuEventCreate
+  1x  cudaEventCreateWithFlags -> cuEventCreate
+  1x  cudaMallocHost -> cuMemHostAlloc
+  1x  cudaHostAlloc -> cuMemHostAlloc
+  1x  cudaMemsetAsync -> cuMemsetD8Async
+  1x  cudaLaunchKernel -> cuLibraryLoadData
+  1x  cudaLaunchKernel -> cuCtxPushCurrent_v2
+  1x  cudaLaunchKernel -> cuLibraryGetModule
+  1x  cudaLaunchKernel -> cuCtxPopCurrent_v2
+  1x  cudaLaunchKernel -> cuModuleGetFunction
+  1x  cudaLaunchKernel -> cuLaunchKernel
+  1x  cudaMemcpyAsync -> cuMemcpyDtoHAsync_v2
+  1x  cudaStreamSynchronize -> cuStreamSynchronize
+  1x  cudaEventSynchronize -> cuEventSynchronize
+  1x  cudaEventElapsedTime -> cuEventElapsedTime
+  1x  cudaDeviceSynchronize -> cuCtxSynchronize
+  1x  cudaStreamDestroy -> cuStreamDestroy_v2
+
+Top unmapped driver APIs:
+  111x  cuDeviceGetAttribute
+  1x  cuModuleGetLoadingMode
+  1x  cuDeviceGetCount
+  1x  cuDeviceGet
+  1x  cuDeviceGetName
+  1x  cuDeviceTotalMem_v2
+  1x  cuDeviceGetUuid
+  1x  cuDeviceGetLuid
+
+Interpretation notes:
+  nested_same_correlation is the strongest result: the driver API span is inside the runtime API span and uses the same CUPTI correlation ID.
+  nested_time_window means the driver API is nested inside a runtime API span, but the correlation ID differs.
+  overlap_* results are fallback time-window matches and should be treated as weaker evidence.
+  unmapped driver spans are usually CUDA driver initialization or direct Driver API work outside any Runtime API span.

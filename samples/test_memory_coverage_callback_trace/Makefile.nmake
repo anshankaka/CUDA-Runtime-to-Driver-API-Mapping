@@ -1,0 +1,4 @@
+TARGET_NAME = test_memory_coverage_callback_trace
+SOURCE = test_memory_coverage_callback_trace.cu
+
+!INCLUDE ..\..\common\common.nmake

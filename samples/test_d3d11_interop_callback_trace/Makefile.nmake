@@ -1,0 +1,5 @@
+TARGET_NAME = test_d3d11_interop_callback_trace
+SOURCE = test_d3d11_interop_callback_trace.cu
+EXTRA_LIBS = -ld3d11 -ldxgi
+
+!INCLUDE ..\..\common\common.nmake

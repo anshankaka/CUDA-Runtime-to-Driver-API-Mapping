@@ -1,0 +1,4 @@
+TARGET_NAME = test_stream_pool_callback_trace
+SOURCE = test_stream_pool_callback_trace.cu
+
+!INCLUDE ..\..\common\common.nmake

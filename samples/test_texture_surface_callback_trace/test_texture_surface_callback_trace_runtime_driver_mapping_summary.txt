@@ -1,0 +1,126 @@
+Runtime API to Driver API mapping summary
+========================================
+
+Log file: test_texture_surface_callback_trace.log
+Parsed CUPTI callback rows: 416
+Non-CUPTI / skipped lines: 2
+Runtime API spans: 43
+Driver API spans: 165
+Mapped runtime-driver rows: 47
+Unmapped driver spans: 118
+
+Mapping type counts:
+  nested_same_correlation: 47
+  no_driver_api: 13
+
+Runtime API counts:
+  cudaGetErrorString: 6
+  cudaGetLastError: 6
+  cudaFreeArray: 3
+  cudaMallocArray: 2
+  cudaSetDevice: 1
+  cudaStreamCreate: 1
+  cudaCreateChannelDesc: 1
+  cudaMemcpy2DToArrayAsync: 1
+  cudaMemcpy2DArrayToArray: 1
+  cudaMemcpy2DFromArrayAsync: 1
+  cudaCreateTextureObject: 1
+  cudaGetTextureObjectResourceDesc: 1
+  cudaGetTextureObjectTextureDesc: 1
+  cudaGetTextureObjectResourceViewDesc: 1
+  cudaCreateSurfaceObject: 1
+  cudaGetSurfaceObjectResourceDesc: 1
+  cudaDestroySurfaceObject: 1
+  cudaDestroyTextureObject: 1
+  cudaMalloc3DArray: 1
+  cudaMemcpy3DAsync: 1
+  cudaArrayGetMemoryRequirements: 1
+  cudaArrayGetSparseProperties: 1
+  cudaArrayGetPlane: 1
+  cudaMallocMipmappedArray: 1
+  cudaGetMipmappedArrayLevel: 1
+  cudaMipmappedArrayGetMemoryRequirements: 1
+  cudaMipmappedArrayGetSparseProperties: 1
+  cudaStreamSynchronize: 1
+  cudaFreeMipmappedArray: 1
+  cudaStreamDestroy: 1
+
+Runtime function -> driver-count distribution:
+  cudaGetErrorString -> 0 driver call(s): 6 runtime call(s)
+  cudaGetLastError -> 0 driver call(s): 6 runtime call(s)
+  cudaFreeArray -> 1 driver call(s): 3 runtime call(s)
+  cudaMallocArray -> 1 driver call(s): 2 runtime call(s)
+  cudaSetDevice -> 5 driver call(s): 1 runtime call(s)
+  cudaStreamCreate -> 1 driver call(s): 1 runtime call(s)
+  cudaCreateChannelDesc -> 0 driver call(s): 1 runtime call(s)
+  cudaMemcpy2DToArrayAsync -> 2 driver call(s): 1 runtime call(s)
+  cudaMemcpy2DArrayToArray -> 2 driver call(s): 1 runtime call(s)
+  cudaMemcpy2DFromArrayAsync -> 2 driver call(s): 1 runtime call(s)
+  cudaCreateTextureObject -> 2 driver call(s): 1 runtime call(s)
+  cudaGetTextureObjectResourceDesc -> 2 driver call(s): 1 runtime call(s)
+  cudaGetTextureObjectTextureDesc -> 3 driver call(s): 1 runtime call(s)
+  cudaGetTextureObjectResourceViewDesc -> 3 driver call(s): 1 runtime call(s)
+  cudaCreateSurfaceObject -> 2 driver call(s): 1 runtime call(s)
+  cudaGetSurfaceObjectResourceDesc -> 2 driver call(s): 1 runtime call(s)
+  cudaDestroySurfaceObject -> 1 driver call(s): 1 runtime call(s)
+  cudaDestroyTextureObject -> 1 driver call(s): 1 runtime call(s)
+  cudaMalloc3DArray -> 1 driver call(s): 1 runtime call(s)
+  cudaMemcpy3DAsync -> 3 driver call(s): 1 runtime call(s)
+  cudaArrayGetMemoryRequirements -> 1 driver call(s): 1 runtime call(s)
+  cudaArrayGetSparseProperties -> 1 driver call(s): 1 runtime call(s)
+  cudaArrayGetPlane -> 1 driver call(s): 1 runtime call(s)
+  cudaMallocMipmappedArray -> 1 driver call(s): 1 runtime call(s)
+  cudaGetMipmappedArrayLevel -> 1 driver call(s): 1 runtime call(s)
+  cudaMipmappedArrayGetMemoryRequirements -> 1 driver call(s): 1 runtime call(s)
+  cudaMipmappedArrayGetSparseProperties -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamSynchronize -> 1 driver call(s): 1 runtime call(s)
+  cudaFreeMipmappedArray -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamDestroy -> 1 driver call(s): 1 runtime call(s)
+
+Top runtime -> driver pairs:
+  3x  cudaFreeArray -> cuArrayDestroy
+  2x  cudaSetDevice -> cuCtxGetCurrent
+  2x  cudaMallocArray -> cuArray3DCreate_v2
+  2x  cudaMemcpy3DAsync -> cuArray3DGetDescriptor_v2
+  1x  cudaSetDevice -> cuCtxSetCurrent
+  1x  cudaSetDevice -> cuDevicePrimaryCtxRetain
+  1x  cudaSetDevice -> cuCtxGetDevice
+  1x  cudaStreamCreate -> cuStreamCreate
+  1x  cudaMemcpy2DToArrayAsync -> cuArray3DGetDescriptor_v2
+  1x  cudaMemcpy2DToArrayAsync -> cuMemcpy3DAsync_v2
+  1x  cudaMemcpy2DArrayToArray -> cuArray3DGetDescriptor_v2
+  1x  cudaMemcpy2DArrayToArray -> cuMemcpy3D_v2
+  1x  cudaMemcpy2DFromArrayAsync -> cuArray3DGetDescriptor_v2
+  1x  cudaMemcpy2DFromArrayAsync -> cuMemcpy3DAsync_v2
+  1x  cudaCreateTextureObject -> cuArray3DGetDescriptor_v2
+  1x  cudaCreateTextureObject -> cuTexObjectCreate
+  1x  cudaGetTextureObjectResourceDesc -> cuTexObjectGetResourceDesc
+  1x  cudaGetTextureObjectResourceDesc -> cuArray3DGetDescriptor_v2
+  1x  cudaGetTextureObjectTextureDesc -> cuTexObjectGetResourceDesc
+  1x  cudaGetTextureObjectTextureDesc -> cuTexObjectGetTextureDesc
+  1x  cudaGetTextureObjectTextureDesc -> cuArray3DGetDescriptor_v2
+  1x  cudaGetTextureObjectResourceViewDesc -> cuTexObjectGetResourceDesc
+  1x  cudaGetTextureObjectResourceViewDesc -> cuTexObjectGetResourceViewDesc
+  1x  cudaGetTextureObjectResourceViewDesc -> cuArray3DGetDescriptor_v2
+  1x  cudaCreateSurfaceObject -> cuArray3DGetDescriptor_v2
+  1x  cudaCreateSurfaceObject -> cuSurfObjectCreate
+  1x  cudaGetSurfaceObjectResourceDesc -> cuSurfObjectGetResourceDesc
+  1x  cudaGetSurfaceObjectResourceDesc -> cuArray3DGetDescriptor_v2
+  1x  cudaDestroySurfaceObject -> cuSurfObjectDestroy
+  1x  cudaDestroyTextureObject -> cuTexObjectDestroy
+
+Top unmapped driver APIs:
+  111x  cuDeviceGetAttribute
+  1x  cuModuleGetLoadingMode
+  1x  cuDeviceGetCount
+  1x  cuDeviceGet
+  1x  cuDeviceGetName
+  1x  cuDeviceTotalMem_v2
+  1x  cuDeviceGetUuid
+  1x  cuDeviceGetLuid
+
+Interpretation notes:
+  nested_same_correlation is the strongest result: the driver API span is inside the runtime API span and uses the same CUPTI correlation ID.
+  nested_time_window means the driver API is nested inside a runtime API span, but the correlation ID differs.
+  overlap_* results are fallback time-window matches and should be treated as weaker evidence.
+  unmapped driver spans are usually CUDA driver initialization or direct Driver API work outside any Runtime API span.

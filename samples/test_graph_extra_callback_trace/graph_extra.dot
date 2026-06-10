@@ -1,0 +1,65 @@
+digraph dot {
+subgraph cluster_1 {
+label="graph_1" graph[style="dashed"];
+"graph_1_node_0"[style="solid" shape="rectangle" label="0 (topoId: 6)
+EMPTY
+node handle: 0x000001DC5E77AF60
+"];
+
+"graph_1_node_1"[style="solid" shape="rectangle" label="1 (topoId: 0)
+EMPTY
+node handle: 0x000001DC5E77B658
+"];
+
+"graph_1_node_3"[style="solid" shape="rectangle" label="3 (topoId: 5)
+graph_3
+node handle: 0x000001DC5E77C448
+"];
+
+"graph_1_node_4"[style="solid" shape="record" label="{
+MEMCPY
+| {{ID | node handle} | {4 (topoId: 4) | 0x000001DC5E77D238}}
+| {kind | HtoD (HOST PAGEABLE to DEVICE)}
+| {{srcPtr | dstPtr} | {pitch | ptr | xsize | ysize | pitch | ptr | xsize | ysize} | {0 | 0x0000009B5FB6FCB0 | 0 | 0 | 0 | 0x0000000706200000 | 0 | 0}}
+| {{srcPos | {{x | 0} | {y | 0} | {z | 0}}} | {dstPos | {{x | 0} | {y | 0} | {z | 0}}} | {Extent | {{Width | 512} | {Height | 1} | {Depth | 1}}}}
+}"];
+
+"graph_1_node_5"[style="solid" shape="record" label="{
+MEMCPY
+| {{ID | node handle} | {5 (topoId: 3) | 0x000001DC5E77D930}}
+| {kind | HtoD (HOST PAGEABLE to DEVICE)}
+| {{srcPtr | dstPtr} | {pitch | ptr | xsize | ysize | pitch | ptr | xsize | ysize} | {0 | 0x0000009B5FB6FCB0 | 0 | 0 | 0 | 0x0000000706400000 | 0 | 0}}
+| {{srcPos | {{x | 0} | {y | 0} | {z | 0}}} | {dstPos | {{x | 0} | {y | 0} | {z | 0}}} | {Extent | {{Width | 512} | {Height | 1} | {Depth | 1}}}}
+}"];
+
+"graph_1_node_6"[style="solid" shape="record" label="{
+MEMCPY
+| {{ID | node handle} | {6 (topoId: 2) | 0x000001DC5E77E028}}
+| {kind | DtoD (DEVICE to DEVICE)}
+| {{srcPtr | dstPtr} | {pitch | ptr | xsize | ysize | pitch | ptr | xsize | ysize} | {0 | 0x0000000706400000 | 0 | 0 | 0 | 0x0000000706200000 | 0 | 0}}
+| {{srcPos | {{x | 0} | {y | 0} | {z | 0}}} | {dstPos | {{x | 0} | {y | 0} | {z | 0}}} | {Extent | {{Width | 512} | {Height | 1} | {Depth | 1}}}}
+}"];
+
+"graph_1_node_7"[style="bold" shape="record" label="{KERNEL
+| {ID | 7 (topoId: 1) | _Z16GraphExtraKernelPfif\<\<\<1,128,0\>\>\>}
+| {{node handle | func handle} | {0x000001DC5E77E720 | 0x000001DC5E6F5A40}}
+| {accessPolicyWindow | {base_ptr | num_bytes | hitRatio | hitProp | missProp} | {0x0000000000000000 | 0 | 0.000000 | N | N}}
+| {cooperative | 0}
+| {priority | 0}
+}"];
+
+"graph_1_node_0" -> "graph_1_node_3" [headlabel=0];
+"graph_1_node_3" -> "graph_1_node_4" [headlabel=0];
+"graph_1_node_4" -> "graph_1_node_5" [headlabel=0];
+"graph_1_node_5" -> "graph_1_node_6" [headlabel=0];
+"graph_1_node_6" -> "graph_1_node_7" [headlabel=0];
+}
+subgraph cluster_3 {
+label="graph_3" graph[style="dashed"];
+"graph_3_node_0"[style="solid" shape="rectangle" label="0 (topoId: 0)
+EMPTY
+node handle: 0x000001DC5E77CB40
+"];
+
+}
+}

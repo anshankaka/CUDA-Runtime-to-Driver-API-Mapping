@@ -1,0 +1,25 @@
+# Top-level NMake entry for CUPTI callback API tests.
+# Build all tests:
+#   nmake /f Makefile.nmake
+#
+# Build one test:
+#   cd samples\test_vectoradd_callback_trace
+#   nmake /f Makefile.nmake
+
+TESTS = test_vectoradd_callback_trace test_api_mix_callback_trace test_memory_coverage_callback_trace test_stream_pool_callback_trace test_graph_coverage_callback_trace test_device_exec_callback_trace test_texture_surface_callback_trace test_graph_extra_callback_trace test_d3d11_interop_callback_trace test_opengl_interop_callback_trace
+SAMPLE_ROOT = samples
+
+all:
+	@for %d in ($(TESTS)) do @cmd /c "cd /d $(SAMPLE_ROOT)\%d && nmake /nologo /f Makefile.nmake"
+
+run:
+	@for %d in ($(TESTS)) do @cmd /c "cd /d $(SAMPLE_ROOT)\%d && nmake /nologo /f Makefile.nmake run"
+
+analyze:
+	@for %d in ($(TESTS)) do @cmd /c "cd /d $(SAMPLE_ROOT)\%d && nmake /nologo /f Makefile.nmake analyze"
+
+clean:
+	@for %d in ($(TESTS)) do @cmd /c "cd /d $(SAMPLE_ROOT)\%d && nmake /nologo /f Makefile.nmake clean"
+
+cleanall:
+	@if exist build rmdir /S /Q build

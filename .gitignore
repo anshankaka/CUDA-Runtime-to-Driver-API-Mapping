@@ -1,0 +1,19 @@
+# Build outputs
+/build/
+
+# Python cache
+__pycache__/
+*.py[cod]
+/update_cuda_mapping_summaries.py
+
+# IDE/editor state
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+~$*

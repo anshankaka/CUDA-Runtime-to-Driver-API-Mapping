@@ -1,0 +1,5 @@
+TARGET_NAME = test_opengl_interop_callback_trace
+SOURCE = test_opengl_interop_callback_trace.cu
+EXTRA_LIBS = -lopengl32 -lgdi32 -luser32
+
+!INCLUDE ..\..\common\common.nmake

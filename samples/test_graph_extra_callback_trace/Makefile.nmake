@@ -1,0 +1,4 @@
+TARGET_NAME = test_graph_extra_callback_trace
+SOURCE = test_graph_extra_callback_trace.cu
+
+!INCLUDE ..\..\common\common.nmake

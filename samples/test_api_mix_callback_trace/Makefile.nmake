@@ -1,0 +1,4 @@
+TARGET_NAME = test_api_mix_callback_trace
+SOURCE = test_api_mix_callback_trace.cu
+
+!INCLUDE ..\..\common\common.nmake

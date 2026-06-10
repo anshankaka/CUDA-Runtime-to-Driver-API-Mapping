@@ -1,0 +1,71 @@
+Runtime API to Driver API mapping summary
+========================================
+
+Log file: test_d3d11_interop_callback_trace.log
+Parsed CUPTI callback rows: 304
+Non-CUPTI / skipped lines: 2
+Runtime API spans: 15
+Driver API spans: 137
+Mapped runtime-driver rows: 19
+Unmapped driver spans: 118
+
+Mapping type counts:
+  nested_same_correlation: 19
+
+Runtime API counts:
+  cudaGraphicsD3D11RegisterResource: 3
+  cudaGraphicsUnregisterResource: 3
+  cudaD3D11GetDevice: 1
+  cudaSetDevice: 1
+  cudaD3D11GetDevices: 1
+  cudaGraphicsResourceSetMapFlags: 1
+  cudaGraphicsMapResources: 1
+  cudaGraphicsResourceGetMappedPointer: 1
+  cudaGraphicsSubResourceGetMappedArray: 1
+  cudaGraphicsResourceGetMappedMipmappedArray: 1
+  cudaGraphicsUnmapResources: 1
+
+Runtime function -> driver-count distribution:
+  cudaGraphicsD3D11RegisterResource -> 1 driver call(s): 3 runtime call(s)
+  cudaGraphicsUnregisterResource -> 1 driver call(s): 3 runtime call(s)
+  cudaD3D11GetDevice -> 1 driver call(s): 1 runtime call(s)
+  cudaSetDevice -> 5 driver call(s): 1 runtime call(s)
+  cudaD3D11GetDevices -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphicsResourceSetMapFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphicsMapResources -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphicsResourceGetMappedPointer -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphicsSubResourceGetMappedArray -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphicsResourceGetMappedMipmappedArray -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphicsUnmapResources -> 1 driver call(s): 1 runtime call(s)
+
+Top runtime -> driver pairs:
+  3x  cudaGraphicsD3D11RegisterResource -> cuGraphicsD3D11RegisterResource
+  3x  cudaGraphicsUnregisterResource -> cuGraphicsUnregisterResource
+  2x  cudaSetDevice -> cuCtxGetCurrent
+  1x  cudaD3D11GetDevice -> cuD3D11GetDevice
+  1x  cudaSetDevice -> cuCtxSetCurrent
+  1x  cudaSetDevice -> cuDevicePrimaryCtxRetain
+  1x  cudaSetDevice -> cuCtxGetDevice
+  1x  cudaD3D11GetDevices -> cuD3D11GetDevices
+  1x  cudaGraphicsResourceSetMapFlags -> cuGraphicsResourceSetMapFlags_v2
+  1x  cudaGraphicsMapResources -> cuGraphicsMapResources
+  1x  cudaGraphicsResourceGetMappedPointer -> cuGraphicsResourceGetMappedPointer_v2
+  1x  cudaGraphicsSubResourceGetMappedArray -> cuGraphicsSubResourceGetMappedArray
+  1x  cudaGraphicsResourceGetMappedMipmappedArray -> cuGraphicsResourceGetMappedMipmappedArray
+  1x  cudaGraphicsUnmapResources -> cuGraphicsUnmapResources
+
+Top unmapped driver APIs:
+  111x  cuDeviceGetAttribute
+  1x  cuModuleGetLoadingMode
+  1x  cuDeviceGetCount
+  1x  cuDeviceGet
+  1x  cuDeviceGetName
+  1x  cuDeviceTotalMem_v2
+  1x  cuDeviceGetUuid
+  1x  cuDeviceGetLuid
+
+Interpretation notes:
+  nested_same_correlation is the strongest result: the driver API span is inside the runtime API span and uses the same CUPTI correlation ID.
+  nested_time_window means the driver API is nested inside a runtime API span, but the correlation ID differs.
+  overlap_* results are fallback time-window matches and should be treated as weaker evidence.
+  unmapped driver spans are usually CUDA driver initialization or direct Driver API work outside any Runtime API span.

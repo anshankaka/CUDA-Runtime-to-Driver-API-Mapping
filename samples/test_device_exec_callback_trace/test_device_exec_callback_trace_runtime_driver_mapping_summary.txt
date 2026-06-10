@@ -1,0 +1,147 @@
+Runtime API to Driver API mapping summary
+========================================
+
+Log file: test_device_exec_callback_trace.log
+Parsed CUPTI callback rows: 630
+Non-CUPTI / skipped lines: 2
+Runtime API spans: 72
+Driver API spans: 243
+Mapped runtime-driver rows: 125
+Unmapped driver spans: 118
+
+Mapping type counts:
+  nested_same_correlation: 125
+  no_driver_api: 11
+
+Runtime API counts:
+  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags: 19
+  cudaDeviceGetAttribute: 9
+  cudaGetDevice: 3
+  cudaFuncGetAttributes: 3
+  cudaGetErrorString: 2
+  cudaGetLastError: 2
+  cudaSetDeviceFlags: 1
+  cudaGetDeviceCount: 1
+  cudaSetDevice: 1
+  cudaGetDeviceProperties_v2: 1
+  cudaChooseDevice: 1
+  cudaInitDevice: 1
+  cudaSetValidDevices: 1
+  cudaGetDeviceFlags: 1
+  cudaDriverGetVersion: 1
+  cudaRuntimeGetVersion: 1
+  cudaDeviceGetPCIBusId: 1
+  cudaDeviceGetByPCIBusId: 1
+  cudaDeviceGetCacheConfig: 1
+  cudaDeviceSetCacheConfig: 1
+  cudaDeviceGetLimit: 1
+  cudaDeviceSetLimit: 1
+  cudaCreateChannelDesc: 1
+  cudaDeviceGetTexture1DLinearMaxWidth: 1
+  cudaDeviceGetDefaultMemPool: 1
+  cudaDeviceSetMemPool: 1
+  cudaDeviceFlushGPUDirectRDMAWrites: 1
+  cudaFuncGetName: 1
+  cudaFuncGetParamInfo: 1
+  cudaFuncSetCacheConfig: 1
+  cudaFuncSetAttribute: 1
+  cudaOccupancyMaxActiveBlocksPerMultiprocessor: 1
+  cudaOccupancyAvailableDynamicSMemPerBlock: 1
+  cudaOccupancyMaxPotentialClusterSize: 1
+  cudaOccupancyMaxActiveClusters: 1
+  cudaMalloc: 1
+  cudaLaunchKernelExC: 1
+  cudaDeviceSynchronize: 1
+  cudaFree: 1
+  cudaGetErrorName: 1
+
+Runtime function -> driver-count distribution:
+  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags -> 1 driver call(s): 19 runtime call(s)
+  cudaDeviceGetAttribute -> 1 driver call(s): 9 runtime call(s)
+  cudaGetDevice -> 1 driver call(s): 3 runtime call(s)
+  cudaGetErrorString -> 0 driver call(s): 2 runtime call(s)
+  cudaGetLastError -> 0 driver call(s): 2 runtime call(s)
+  cudaFuncGetAttributes -> 16 driver call(s): 2 runtime call(s)
+  cudaSetDeviceFlags -> 6 driver call(s): 1 runtime call(s)
+  cudaGetDeviceCount -> 0 driver call(s): 1 runtime call(s)
+  cudaSetDevice -> 1 driver call(s): 1 runtime call(s)
+  cudaGetDeviceProperties_v2 -> 5 driver call(s): 1 runtime call(s)
+  cudaChooseDevice -> 0 driver call(s): 1 runtime call(s)
+  cudaInitDevice -> 2 driver call(s): 1 runtime call(s)
+  cudaSetValidDevices -> 1 driver call(s): 1 runtime call(s)
+  cudaGetDeviceFlags -> 2 driver call(s): 1 runtime call(s)
+  cudaDriverGetVersion -> 0 driver call(s): 1 runtime call(s)
+  cudaRuntimeGetVersion -> 0 driver call(s): 1 runtime call(s)
+  cudaDeviceGetPCIBusId -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceGetByPCIBusId -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceGetCacheConfig -> 4 driver call(s): 1 runtime call(s)
+  cudaDeviceSetCacheConfig -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceGetLimit -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceSetLimit -> 1 driver call(s): 1 runtime call(s)
+  cudaCreateChannelDesc -> 0 driver call(s): 1 runtime call(s)
+  cudaDeviceGetTexture1DLinearMaxWidth -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceGetDefaultMemPool -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceSetMemPool -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceFlushGPUDirectRDMAWrites -> 1 driver call(s): 1 runtime call(s)
+  cudaFuncGetAttributes -> 21 driver call(s): 1 runtime call(s)
+  cudaFuncGetName -> 0 driver call(s): 1 runtime call(s)
+  cudaFuncGetParamInfo -> 1 driver call(s): 1 runtime call(s)
+  cudaFuncSetCacheConfig -> 1 driver call(s): 1 runtime call(s)
+  cudaFuncSetAttribute -> 1 driver call(s): 1 runtime call(s)
+  cudaOccupancyMaxActiveBlocksPerMultiprocessor -> 1 driver call(s): 1 runtime call(s)
+  cudaOccupancyAvailableDynamicSMemPerBlock -> 1 driver call(s): 1 runtime call(s)
+  cudaOccupancyMaxPotentialClusterSize -> 1 driver call(s): 1 runtime call(s)
+  cudaOccupancyMaxActiveClusters -> 1 driver call(s): 1 runtime call(s)
+  cudaMalloc -> 1 driver call(s): 1 runtime call(s)
+  cudaLaunchKernelExC -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceSynchronize -> 1 driver call(s): 1 runtime call(s)
+  cudaFree -> 1 driver call(s): 1 runtime call(s)
+  cudaGetErrorName -> 0 driver call(s): 1 runtime call(s)
+
+Top runtime -> driver pairs:
+  48x  cudaFuncGetAttributes -> cuFuncGetAttribute
+  19x  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags -> cuOccupancyMaxActiveBlocksPerMultiprocessorWithFlags
+  9x  cudaDeviceGetAttribute -> cuDeviceGetAttribute
+  5x  cudaGetDeviceProperties_v2 -> cuDeviceGetAttribute
+  3x  cudaGetDevice -> cuCtxGetDevice
+  2x  cudaSetDeviceFlags -> cuCtxGetCurrent
+  1x  cudaSetDeviceFlags -> cuCtxSetCurrent
+  1x  cudaSetDeviceFlags -> cuDevicePrimaryCtxRetain
+  1x  cudaSetDeviceFlags -> cuCtxGetDevice
+  1x  cudaSetDeviceFlags -> cuDevicePrimaryCtxSetFlags_v2
+  1x  cudaSetDevice -> cuCtxSetCurrent
+  1x  cudaInitDevice -> cuCtxPushCurrent_v2
+  1x  cudaInitDevice -> cuCtxPopCurrent_v2
+  1x  cudaSetValidDevices -> cuCtxSetCurrent
+  1x  cudaGetDeviceFlags -> cuCtxGetCurrent
+  1x  cudaGetDeviceFlags -> cuDevicePrimaryCtxGetState
+  1x  cudaDeviceGetPCIBusId -> cuDeviceGetPCIBusId
+  1x  cudaDeviceGetByPCIBusId -> cuDeviceGetByPCIBusId
+  1x  cudaDeviceGetCacheConfig -> cuCtxGetCurrent
+  1x  cudaDeviceGetCacheConfig -> cuCtxSetCurrent
+  1x  cudaDeviceGetCacheConfig -> cuCtxGetApiVersion
+  1x  cudaDeviceGetCacheConfig -> cuCtxGetCacheConfig
+  1x  cudaDeviceSetCacheConfig -> cuCtxSetCacheConfig
+  1x  cudaDeviceGetLimit -> cuCtxGetLimit
+  1x  cudaDeviceSetLimit -> cuCtxSetLimit
+  1x  cudaDeviceGetTexture1DLinearMaxWidth -> cuDeviceGetTexture1DLinearMaxWidth
+  1x  cudaDeviceGetDefaultMemPool -> cuDeviceGetDefaultMemPool
+  1x  cudaDeviceSetMemPool -> cuDeviceSetMemPool
+  1x  cudaDeviceFlushGPUDirectRDMAWrites -> cuFlushGPUDirectRDMAWrites
+  1x  cudaFuncGetAttributes -> cuLibraryLoadData
+
+Top unmapped driver APIs:
+  111x  cuDeviceGetAttribute
+  1x  cuModuleGetLoadingMode
+  1x  cuDeviceGetCount
+  1x  cuDeviceGet
+  1x  cuDeviceGetName
+  1x  cuDeviceTotalMem_v2
+  1x  cuDeviceGetUuid
+  1x  cuDeviceGetLuid
+
+Interpretation notes:
+  nested_same_correlation is the strongest result: the driver API span is inside the runtime API span and uses the same CUPTI correlation ID.
+  nested_time_window means the driver API is nested inside a runtime API span, but the correlation ID differs.
+  overlap_* results are fallback time-window matches and should be treated as weaker evidence.
+  unmapped driver spans are usually CUDA driver initialization or direct Driver API work outside any Runtime API span.

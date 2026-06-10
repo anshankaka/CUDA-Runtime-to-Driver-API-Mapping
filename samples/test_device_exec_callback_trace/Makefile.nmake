@@ -1,0 +1,4 @@
+TARGET_NAME = test_device_exec_callback_trace
+SOURCE = test_device_exec_callback_trace.cu
+
+!INCLUDE ..\..\common\common.nmake

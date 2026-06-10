@@ -1,0 +1,130 @@
+Runtime API to Driver API mapping summary
+========================================
+
+Log file: test_stream_pool_callback_trace.log
+Parsed CUPTI callback rows: 394
+Non-CUPTI / skipped lines: 2
+Runtime API spans: 36
+Driver API spans: 161
+Mapped runtime-driver rows: 43
+Unmapped driver spans: 118
+
+Mapping type counts:
+  nested_same_correlation: 43
+  no_driver_api: 2
+
+Runtime API counts:
+  cudaStreamSynchronize: 3
+  cudaFreeAsync: 2
+  cudaStreamDestroy: 2
+  cudaSetDevice: 1
+  cudaDeviceGetStreamPriorityRange: 1
+  cudaStreamCreate: 1
+  cudaStreamCreateWithPriority: 1
+  cudaEventCreateWithFlags: 1
+  cudaStreamGetFlags: 1
+  cudaStreamGetPriority: 1
+  cudaStreamGetId: 1
+  cudaMallocManaged: 1
+  cudaStreamAttachMemAsync: 1
+  cudaDeviceGetDefaultMemPool: 1
+  cudaDeviceGetMemPool: 1
+  cudaMemPoolSetAttribute: 1
+  cudaMemPoolGetAttribute: 1
+  cudaMallocAsync: 1
+  cudaMallocFromPoolAsync: 1
+  cudaMemsetAsync: 1
+  cudaLaunchKernel: 1
+  cudaPeekAtLastError: 1
+  cudaEventRecordWithFlags: 1
+  cudaStreamWaitEvent: 1
+  cudaMemcpyAsync: 1
+  cudaLaunchHostFunc: 1
+  cudaStreamQuery: 1
+  cudaGetLastError: 1
+  cudaMemPoolTrimTo: 1
+  cudaFree: 1
+  cudaEventDestroy: 1
+  cudaDeviceSynchronize: 1
+
+Runtime function -> driver-count distribution:
+  cudaStreamSynchronize -> 1 driver call(s): 3 runtime call(s)
+  cudaFreeAsync -> 1 driver call(s): 2 runtime call(s)
+  cudaStreamDestroy -> 1 driver call(s): 2 runtime call(s)
+  cudaSetDevice -> 5 driver call(s): 1 runtime call(s)
+  cudaDeviceGetStreamPriorityRange -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamCreate -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamCreateWithPriority -> 1 driver call(s): 1 runtime call(s)
+  cudaEventCreateWithFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamGetFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamGetPriority -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamGetId -> 1 driver call(s): 1 runtime call(s)
+  cudaMallocManaged -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamAttachMemAsync -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceGetDefaultMemPool -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceGetMemPool -> 1 driver call(s): 1 runtime call(s)
+  cudaMemPoolSetAttribute -> 1 driver call(s): 1 runtime call(s)
+  cudaMemPoolGetAttribute -> 1 driver call(s): 1 runtime call(s)
+  cudaMallocAsync -> 1 driver call(s): 1 runtime call(s)
+  cudaMallocFromPoolAsync -> 1 driver call(s): 1 runtime call(s)
+  cudaMemsetAsync -> 1 driver call(s): 1 runtime call(s)
+  cudaLaunchKernel -> 6 driver call(s): 1 runtime call(s)
+  cudaPeekAtLastError -> 0 driver call(s): 1 runtime call(s)
+  cudaEventRecordWithFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamWaitEvent -> 1 driver call(s): 1 runtime call(s)
+  cudaMemcpyAsync -> 1 driver call(s): 1 runtime call(s)
+  cudaLaunchHostFunc -> 1 driver call(s): 1 runtime call(s)
+  cudaStreamQuery -> 1 driver call(s): 1 runtime call(s)
+  cudaGetLastError -> 0 driver call(s): 1 runtime call(s)
+  cudaMemPoolTrimTo -> 1 driver call(s): 1 runtime call(s)
+  cudaFree -> 1 driver call(s): 1 runtime call(s)
+  cudaEventDestroy -> 1 driver call(s): 1 runtime call(s)
+  cudaDeviceSynchronize -> 1 driver call(s): 1 runtime call(s)
+
+Top runtime -> driver pairs:
+  3x  cudaStreamSynchronize -> cuStreamSynchronize
+  2x  cudaSetDevice -> cuCtxGetCurrent
+  2x  cudaFreeAsync -> cuMemFreeAsync
+  2x  cudaStreamDestroy -> cuStreamDestroy_v2
+  1x  cudaSetDevice -> cuCtxSetCurrent
+  1x  cudaSetDevice -> cuDevicePrimaryCtxRetain
+  1x  cudaSetDevice -> cuCtxGetDevice
+  1x  cudaDeviceGetStreamPriorityRange -> cuCtxGetStreamPriorityRange
+  1x  cudaStreamCreate -> cuStreamCreate
+  1x  cudaStreamCreateWithPriority -> cuStreamCreateWithPriority
+  1x  cudaEventCreateWithFlags -> cuEventCreate
+  1x  cudaStreamGetFlags -> cuStreamGetFlags
+  1x  cudaStreamGetPriority -> cuStreamGetPriority
+  1x  cudaStreamGetId -> cuStreamGetId
+  1x  cudaMallocManaged -> cuMemAllocManaged
+  1x  cudaStreamAttachMemAsync -> cuStreamAttachMemAsync
+  1x  cudaDeviceGetDefaultMemPool -> cuDeviceGetDefaultMemPool
+  1x  cudaDeviceGetMemPool -> cuDeviceGetMemPool
+  1x  cudaMemPoolSetAttribute -> cuMemPoolSetAttribute
+  1x  cudaMemPoolGetAttribute -> cuMemPoolGetAttribute
+  1x  cudaMallocAsync -> cuMemAllocAsync
+  1x  cudaMallocFromPoolAsync -> cuMemAllocFromPoolAsync
+  1x  cudaMemsetAsync -> cuMemsetD8Async
+  1x  cudaLaunchKernel -> cuLibraryLoadData
+  1x  cudaLaunchKernel -> cuCtxPushCurrent_v2
+  1x  cudaLaunchKernel -> cuLibraryGetModule
+  1x  cudaLaunchKernel -> cuCtxPopCurrent_v2
+  1x  cudaLaunchKernel -> cuModuleGetFunction
+  1x  cudaLaunchKernel -> cuLaunchKernel
+  1x  cudaEventRecordWithFlags -> cuEventRecordWithFlags
+
+Top unmapped driver APIs:
+  111x  cuDeviceGetAttribute
+  1x  cuModuleGetLoadingMode
+  1x  cuDeviceGetCount
+  1x  cuDeviceGet
+  1x  cuDeviceGetName
+  1x  cuDeviceTotalMem_v2
+  1x  cuDeviceGetUuid
+  1x  cuDeviceGetLuid
+
+Interpretation notes:
+  nested_same_correlation is the strongest result: the driver API span is inside the runtime API span and uses the same CUPTI correlation ID.
+  nested_time_window means the driver API is nested inside a runtime API span, but the correlation ID differs.
+  overlap_* results are fallback time-window matches and should be treated as weaker evidence.
+  unmapped driver spans are usually CUDA driver initialization or direct Driver API work outside any Runtime API span.

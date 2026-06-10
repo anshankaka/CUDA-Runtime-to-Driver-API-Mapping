@@ -1,0 +1,8 @@
+# Build from this directory:
+#   nmake /f Makefile.nmake
+#   nmake /f Makefile.nmake run
+
+TARGET_NAME = test_vectoradd_callback_trace
+SOURCE = test_vectoradd_callback_trace.cu
+
+!INCLUDE ..\..\common\common.nmake

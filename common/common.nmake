@@ -1,0 +1,69 @@
+# Shared NMake rules for CUPTI callback API tests.
+#
+# Each test directory should define:
+#   TARGET_NAME = test_name_without_exe
+#   SOURCE = test_name.cu
+# then include this file:
+#   !INCLUDE ..\..\common\common.nmake
+
+!IFNDEF CUDA_PATH
+CUDA_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6
+!ENDIF
+
+ROOT = ..\..
+DEPS = $(ROOT)\deps
+
+CUDA_LOCAL = $(DEPS)\cuda-12.6
+CUPTI_LOCAL = $(DEPS)\cupti-12.6
+
+NVCC = "$(CUDA_PATH)\bin\nvcc.exe"
+
+OUTDIR = $(ROOT)\build\bin
+OBJDIR = $(ROOT)\build\obj\$(TARGET_NAME)
+TARGET = $(OUTDIR)\$(TARGET_NAME).exe
+SAMPLEDIR = .
+TRACE_LOG = $(SAMPLEDIR)\$(TARGET_NAME).log
+
+NVCCFLAGS = -Xcompiler "/utf-8" -DTRACE_LOG_FILE=\"$(TARGET_NAME).log\"
+INCLUDES = -I"$(CUDA_LOCAL)\include" -I"$(CUPTI_LOCAL)\include"
+LIBDIRS = -L"$(CUDA_LOCAL)\lib\x64" -L"$(CUPTI_LOCAL)\lib64"
+LIBS = -lcuda -lcudart -lcupti
+
+!IFNDEF EXTRA_LIBS
+EXTRA_LIBS =
+!ENDIF
+
+!IFNDEF GENCODE
+GENCODE = -gencode arch=compute_89,code=sm_89
+!ENDIF
+
+all: dirs copydll $(TARGET)
+
+dirs:
+	@if not exist "$(OUTDIR)" mkdir "$(OUTDIR)"
+	@if not exist "$(OBJDIR)" mkdir "$(OBJDIR)"
+
+copydll:
+	@if exist "$(CUPTI_LOCAL)\lib64\cupti64_2024.3.2.dll" copy /Y "$(CUPTI_LOCAL)\lib64\cupti64_2024.3.2.dll" "$(OUTDIR)\" >NUL
+	@if exist "$(CUDA_LOCAL)\bin\cudart64_12.dll" copy /Y "$(CUDA_LOCAL)\bin\cudart64_12.dll" "$(OUTDIR)\" >NUL
+
+$(TARGET): $(SOURCE)
+	$(NVCC) $(NVCCFLAGS) $(GENCODE) $(INCLUDES) "$(SOURCE)" -o "$(TARGET)" $(LIBDIRS) $(LIBS) $(EXTRA_LIBS)
+
+run: all
+	@if exist "$(TRACE_LOG)" del /Q "$(TRACE_LOG)"
+	@cd /D "$(SAMPLEDIR)" && "..\..\build\bin\$(TARGET_NAME).exe"
+
+analyze:
+	python "$(ROOT)\tools\analyze_runtime_driver_mapping.py" --input "$(TRACE_LOG)" --detail-csv "$(SAMPLEDIR)\$(TARGET_NAME)_runtime_driver_mapping.csv" --unmapped-driver-csv "$(SAMPLEDIR)\$(TARGET_NAME)_unmapped_driver_api.csv" --summary "$(SAMPLEDIR)\$(TARGET_NAME)_runtime_driver_mapping_summary.txt"
+
+clean:
+	@if exist "$(OBJDIR)" rmdir /S /Q "$(OBJDIR)"
+	@if exist "$(TARGET)" del /Q "$(TARGET)"
+	@if exist "$(TRACE_LOG)" del /Q "$(TRACE_LOG)"
+	@if exist "$(SAMPLEDIR)\$(TARGET_NAME)_runtime_driver_mapping.csv" del /Q "$(SAMPLEDIR)\$(TARGET_NAME)_runtime_driver_mapping.csv"
+	@if exist "$(SAMPLEDIR)\$(TARGET_NAME)_unmapped_driver_api.csv" del /Q "$(SAMPLEDIR)\$(TARGET_NAME)_unmapped_driver_api.csv"
+	@if exist "$(SAMPLEDIR)\$(TARGET_NAME)_runtime_driver_mapping_summary.txt" del /Q "$(SAMPLEDIR)\$(TARGET_NAME)_runtime_driver_mapping_summary.txt"
+
+cleanall:
+	@if exist "$(ROOT)\build" rmdir /S /Q "$(ROOT)\build"

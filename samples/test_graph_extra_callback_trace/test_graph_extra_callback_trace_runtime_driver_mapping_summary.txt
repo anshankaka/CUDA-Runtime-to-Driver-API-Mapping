@@ -1,0 +1,151 @@
+Runtime API to Driver API mapping summary
+========================================
+
+Log file: test_graph_extra_callback_trace.log
+Parsed CUPTI callback rows: 486
+Non-CUPTI / skipped lines: 2
+Runtime API spans: 51
+Driver API spans: 192
+Mapped runtime-driver rows: 74
+Unmapped driver spans: 118
+
+Mapping type counts:
+  nested_same_correlation: 74
+
+Runtime API counts:
+  cudaGraphAddEmptyNode: 4
+  cudaGraphExecDestroy: 3
+  cudaGraphDestroy: 3
+  cudaGraphCreate: 2
+  cudaSetDevice: 1
+  cudaMalloc: 1
+  cudaGraphDestroyNode: 1
+  cudaGraphAddChildGraphNode: 1
+  cudaGraphChildGraphNodeGetGraph: 1
+  cudaGraphAddMemcpyNode1D: 1
+  cudaGraphAddMemcpyNodeToSymbol: 1
+  cudaGraphAddMemcpyNodeFromSymbol: 1
+  cudaGraphAddKernelNode: 1
+  cudaGraphAddDependencies: 1
+  cudaGraphNodeGetDependencies: 1
+  cudaGraphNodeGetDependentNodes: 1
+  cudaGraphRemoveDependencies: 1
+  cudaGraphAddDependencies_v2: 1
+  cudaGraphNodeGetDependencies_v2: 1
+  cudaGraphNodeGetDependentNodes_v2: 1
+  cudaGraphRemoveDependencies_v2: 1
+  cudaGraphMemcpyNodeGetParams: 1
+  cudaGraphMemcpyNodeSetParams1D: 1
+  cudaGraphMemcpyNodeSetParamsToSymbol: 1
+  cudaGraphMemcpyNodeSetParamsFromSymbol: 1
+  cudaGraphKernelNodeSetAttribute: 1
+  cudaGraphKernelNodeGetAttribute: 1
+  cudaGraphInstantiate: 1
+  cudaGraphInstantiateWithFlags: 1
+  cudaGraphInstantiateWithParams: 1
+  cudaGraphNodeSetEnabled: 1
+  cudaGraphNodeGetEnabled: 1
+  cudaGraphExecMemcpyNodeSetParams1D: 1
+  cudaGraphExecMemcpyNodeSetParamsToSymbol: 1
+  cudaGraphExecMemcpyNodeSetParamsFromSymbol: 1
+  cudaUserObjectCreate: 1
+  cudaUserObjectRetain: 1
+  cudaGraphRetainUserObject: 1
+  cudaGraphReleaseUserObject: 1
+  cudaUserObjectRelease: 1
+  cudaGraphClone: 1
+  cudaGraphDebugDotPrint: 1
+  cudaFree: 1
+
+Runtime function -> driver-count distribution:
+  cudaGraphAddEmptyNode -> 1 driver call(s): 4 runtime call(s)
+  cudaGraphExecDestroy -> 1 driver call(s): 3 runtime call(s)
+  cudaGraphDestroy -> 1 driver call(s): 3 runtime call(s)
+  cudaGraphCreate -> 1 driver call(s): 2 runtime call(s)
+  cudaSetDevice -> 5 driver call(s): 1 runtime call(s)
+  cudaMalloc -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphDestroyNode -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphAddChildGraphNode -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphChildGraphNodeGetGraph -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphAddMemcpyNode1D -> 2 driver call(s): 1 runtime call(s)
+  cudaGraphAddMemcpyNodeToSymbol -> 8 driver call(s): 1 runtime call(s)
+  cudaGraphAddMemcpyNodeFromSymbol -> 3 driver call(s): 1 runtime call(s)
+  cudaGraphAddKernelNode -> 3 driver call(s): 1 runtime call(s)
+  cudaGraphAddDependencies -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphNodeGetDependencies -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphNodeGetDependentNodes -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphRemoveDependencies -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphAddDependencies_v2 -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphNodeGetDependencies_v2 -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphNodeGetDependentNodes_v2 -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphRemoveDependencies_v2 -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphMemcpyNodeGetParams -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphMemcpyNodeSetParams1D -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphMemcpyNodeSetParamsToSymbol -> 2 driver call(s): 1 runtime call(s)
+  cudaGraphMemcpyNodeSetParamsFromSymbol -> 2 driver call(s): 1 runtime call(s)
+  cudaGraphKernelNodeSetAttribute -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphKernelNodeGetAttribute -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphInstantiate -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphInstantiateWithFlags -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphInstantiateWithParams -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphNodeSetEnabled -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphNodeGetEnabled -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphExecMemcpyNodeSetParams1D -> 2 driver call(s): 1 runtime call(s)
+  cudaGraphExecMemcpyNodeSetParamsToSymbol -> 3 driver call(s): 1 runtime call(s)
+  cudaGraphExecMemcpyNodeSetParamsFromSymbol -> 3 driver call(s): 1 runtime call(s)
+  cudaUserObjectCreate -> 1 driver call(s): 1 runtime call(s)
+  cudaUserObjectRetain -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphRetainUserObject -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphReleaseUserObject -> 1 driver call(s): 1 runtime call(s)
+  cudaUserObjectRelease -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphClone -> 1 driver call(s): 1 runtime call(s)
+  cudaGraphDebugDotPrint -> 1 driver call(s): 1 runtime call(s)
+  cudaFree -> 1 driver call(s): 1 runtime call(s)
+
+Top runtime -> driver pairs:
+  4x  cudaGraphAddEmptyNode -> cuGraphAddEmptyNode
+  3x  cudaGraphExecDestroy -> cuGraphExecDestroy
+  3x  cudaGraphDestroy -> cuGraphDestroy
+  2x  cudaSetDevice -> cuCtxGetCurrent
+  2x  cudaGraphCreate -> cuGraphCreate
+  2x  cudaGraphAddMemcpyNodeToSymbol -> cuModuleGetGlobal_v2
+  1x  cudaSetDevice -> cuCtxSetCurrent
+  1x  cudaSetDevice -> cuDevicePrimaryCtxRetain
+  1x  cudaSetDevice -> cuCtxGetDevice
+  1x  cudaMalloc -> cuMemAlloc_v2
+  1x  cudaGraphDestroyNode -> cuGraphDestroyNode
+  1x  cudaGraphAddChildGraphNode -> cuGraphAddChildGraphNode
+  1x  cudaGraphChildGraphNodeGetGraph -> cuGraphChildGraphNodeGetGraph
+  1x  cudaGraphAddMemcpyNode1D -> cuCtxGetCurrent
+  1x  cudaGraphAddMemcpyNode1D -> cuGraphAddMemcpyNode
+  1x  cudaGraphAddMemcpyNodeToSymbol -> cuLibraryLoadData
+  1x  cudaGraphAddMemcpyNodeToSymbol -> cuCtxPushCurrent_v2
+  1x  cudaGraphAddMemcpyNodeToSymbol -> cuLibraryGetModule
+  1x  cudaGraphAddMemcpyNodeToSymbol -> cuCtxPopCurrent_v2
+  1x  cudaGraphAddMemcpyNodeToSymbol -> cuCtxGetCurrent
+  1x  cudaGraphAddMemcpyNodeToSymbol -> cuGraphAddMemcpyNode
+  1x  cudaGraphAddMemcpyNodeFromSymbol -> cuModuleGetGlobal_v2
+  1x  cudaGraphAddMemcpyNodeFromSymbol -> cuCtxGetCurrent
+  1x  cudaGraphAddMemcpyNodeFromSymbol -> cuGraphAddMemcpyNode
+  1x  cudaGraphAddKernelNode -> cuModuleGetFunction
+  1x  cudaGraphAddKernelNode -> cuCtxGetCurrent
+  1x  cudaGraphAddKernelNode -> cuGraphAddKernelNode_v2
+  1x  cudaGraphAddDependencies -> cuGraphAddDependencies
+  1x  cudaGraphNodeGetDependencies -> cuGraphNodeGetDependencies
+  1x  cudaGraphNodeGetDependentNodes -> cuGraphNodeGetDependentNodes
+
+Top unmapped driver APIs:
+  111x  cuDeviceGetAttribute
+  1x  cuModuleGetLoadingMode
+  1x  cuDeviceGetCount
+  1x  cuDeviceGet
+  1x  cuDeviceGetName
+  1x  cuDeviceTotalMem_v2
+  1x  cuDeviceGetUuid
+  1x  cuDeviceGetLuid
+
+Interpretation notes:
+  nested_same_correlation is the strongest result: the driver API span is inside the runtime API span and uses the same CUPTI correlation ID.
+  nested_time_window means the driver API is nested inside a runtime API span, but the correlation ID differs.
+  overlap_* results are fallback time-window matches and should be treated as weaker evidence.
+  unmapped driver spans are usually CUDA driver initialization or direct Driver API work outside any Runtime API span.
